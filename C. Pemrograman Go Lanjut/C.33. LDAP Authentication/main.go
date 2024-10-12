@@ -15,23 +15,21 @@ const view = `<html>
         <title>Template</title>
     </head>
     <body>
-		<form method="post" action="/login">
-			<div>
-				<label>username</label>
-				<input type="text" name="username" required/>
-			</div>
-			<div>
-				<label>password</label>
-				<input type="password" name="password" required/>
-			</div>
-			<button type="submit">Login</button>
-		</form>
+        <form method="post" action="/login">
+            <div>
+                <label>username</label>
+                <input type="text" name="username" required/>
+            </div>
+            <div>
+                <label>password</label>
+                <input type="password" name="password" required/>
+            </div>
+            <button type="submit">Login</button>
+        </form>
     </body>
 </html>`
 
 func main() {
-
-	// landing page, show login form
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		var tmpl = template.Must(template.New("main-template").Parse(view))
 		if err := tmpl.Execute(w, nil); err != nil {
@@ -39,7 +37,6 @@ func main() {
 		}
 	})
 
-	// handle login action
 	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
 		r.ParseForm()
 
@@ -62,7 +59,6 @@ func main() {
 		w.Write([]byte(message))
 	})
 
-	// start the web server
 	portString := fmt.Sprintf(":%d", webServerPort)
 	fmt.Println("server started at", portString)
 	http.ListenAndServe(portString, nil)
