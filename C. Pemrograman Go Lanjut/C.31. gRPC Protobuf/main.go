@@ -1,10 +1,9 @@
 package main
 
 import (
+	"chapter-c29/model"
 	"fmt"
 	"os"
-
-	"model"
 
 	"google.golang.org/protobuf/encoding/protojson"
 )

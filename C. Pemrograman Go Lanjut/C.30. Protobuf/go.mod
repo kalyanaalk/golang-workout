@@ -1,5 +1,5 @@
-module protobuf
+module chapter-c29
 
-go 1.22.5
+go 1.20
 
-require google.golang.org/protobuf v1.35.1 // indirect
+require google.golang.org/protobuf v1.31.0 // indirect
